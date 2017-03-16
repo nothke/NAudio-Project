@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿/// Plays a random clip from array at random pitch on mouse click
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
