@@ -1,37 +1,54 @@
 ﻿//#define ENABLE_SPATIALIZER_API // remove if no spatializer
 //#define USE_OCULUS_AUDIO
-//#define AUDIO_MANAGER
-//#define POOLING
+#define POOLING
 
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
 public static class NAudio
 {
-    const float standardMinDistance = 1;
-    const float standardSpread = 150;
+    public static Queue<AudioSource> sourcePool;
+    const int POOL_SIZE = 20;
+
+    const float MIN_DISTANCE = 1;
+    const float SPREAD = 150;
+
+    static AudioSource GetNextSource()
+    {
+        AudioSource source = sourcePool.Dequeue();
+        sourcePool.Enqueue(source);
+        return source;
+    }
+
+    public static void InitializePool(int size = POOL_SIZE)
+    {
+        sourcePool = new Queue<AudioSource>(size);
+
+        GameObject poolRoot = new GameObject("NAudio_Pool");
+
+        for (int i = 0; i < size; i++)
+        {
+            sourcePool.Enqueue(CreateSource(poolRoot.transform));
+        }
+    }
 
     public static AudioSource Play(
         this AudioClip clip, Vector3 position,
         float volume = 1, float pitch = 1,
-        float spread = standardSpread,
-        float minDistance = standardMinDistance,
+        float spread = SPREAD,
+        float minDistance = MIN_DISTANCE,
         AudioMixerGroup mixerGroup = null)
     {
         GameObject go;
         AudioSource source;
 
 #if POOLING
-        if (AudioManager.e)
-        {
-            source = AudioManager.e.GetNextSource();
-            go = source.gameObject;
-        }
-        else
-        {
-            go = new GameObject("AudioTemp");
-            source = go.AddComponent<AudioSource>();
-        }
+        if (sourcePool == null)
+            InitializePool();
+
+        source = GetNextSource();
+        go = source.gameObject;
 #else
         go = new GameObject("AudioTemp");
         source = go.AddComponent<AudioSource>();
@@ -57,13 +74,6 @@ public static class NAudio
         source.spatialize = true;
 #endif
 
-#if AUDIO_MANAGER
-        source.SetCustomCurve(AudioSourceCurveType.ReverbZoneMix, AudioManager.e.reverbCurve);
-        //source.outputAudioMixerGroup = AudioManager.e.currentGroup;
-
-
-#endif
-
         source.Play();
 
         if (pitch == 0) pitch = 100;
@@ -78,8 +88,8 @@ public static class NAudio
     public static AudioSource Play(
         this AudioClip[] clips, Vector3 position,
         float volume = 1, float pitch = 1,
-        float spread = standardSpread,
-        float minDistance = standardMinDistance,
+        float spread = SPREAD,
+        float minDistance = MIN_DISTANCE,
         AudioMixerGroup mixerGroup = null)
     {
         if (clips == null) { Debug.Log("Clips array is null"); return null; }
@@ -92,10 +102,10 @@ public static class NAudio
 
     public static AudioSource CreateSource(
         Transform at, AudioClip clip = null,
-        float volume = 1, float pitch = 1, 
+        float volume = 1, float pitch = 1,
         bool loop = true, bool playAtStart = false,
-        float minDistance = standardMinDistance,
-        float spread = standardMinDistance,
+        float minDistance = MIN_DISTANCE,
+        float spread = MIN_DISTANCE,
         float spatialBlend = 1,
         AudioMixerGroup mixerGroup = null)
     {
