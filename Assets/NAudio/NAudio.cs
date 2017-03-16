@@ -53,6 +53,17 @@ public static class NAudio
     }
 #endif
 
+    /// <summary>
+    /// Plays a clip at a position with properties
+    /// </summary>
+    /// <param name="clip">Clip to play</param>
+    /// <param name="position">Position at which it will be played</param>
+    /// <param name="volume"></param>
+    /// <param name="pitch"></param>
+    /// <param name="spread">How 'wide' the panning will be in 3d</param>
+    /// <param name="minDistance"></param>
+    /// <param name="mixerGroup"></param>
+    /// <returns></returns>
     public static AudioSource Play(
         this AudioClip clip, Vector3 position,
         float volume = 1, float pitch = 1,
@@ -105,6 +116,17 @@ public static class NAudio
         return source;
     }
 
+    /// <summary>
+    /// Plays a random AudioClip from an array at a position
+    /// </summary>
+    /// <param name="clips">An array of AudioClips</param>
+    /// <param name="position">Position at which it will be played</param>
+    /// <param name="volume"></param>
+    /// <param name="pitch"></param>
+    /// <param name="spread"></param>
+    /// <param name="minDistance">How 'wide' the panning will be in 3d</param>
+    /// <param name="mixerGroup"></param>
+    /// <returns></returns>
     public static AudioSource Play(
         this AudioClip[] clips, Vector3 position,
         float volume = 1, float pitch = 1,
@@ -120,8 +142,22 @@ public static class NAudio
 
     // AUDIO SOURCE CREATION
 
+    /// <summary>
+    /// Creates an audio source with parameters
+    /// </summary>
+    /// <param name="at">Creates a source object as a child to this transform</param>
+    /// <param name="clip">AudioClip that will be attached to this source and played when Play() is called</param>
+    /// <param name="volume"></param>
+    /// <param name="pitch"></param>
+    /// <param name="loop"></param>
+    /// <param name="playAtStart"></param>
+    /// <param name="minDistance"></param>
+    /// <param name="spread"></param>
+    /// <param name="spatialBlend"></param>
+    /// <param name="mixerGroup"></param>
+    /// <returns></returns>
     public static AudioSource CreateSource(
-        Transform at, AudioClip clip = null,
+        Transform at = null, AudioClip clip = null,
         float volume = 1, float pitch = 1,
         bool loop = true, bool playAtStart = false,
         float minDistance = MIN_DISTANCE,
