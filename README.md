@@ -1,5 +1,5 @@
 # NAudio
-Extensions for a **very simple single line** audio clip playing and audio source creation, with all **custom parameters**, **pooling** and **spatializer support**.
+Extensions for a very simple, **single line** one shot and looped single and **multiple** clip playing, with all custom parameters, **pooling** and **spatializer** support.
 
 I literally can't live without this script
 
@@ -27,7 +27,7 @@ NAudio.CreateSource(transform, clip).Play();
 
 ### Single line methods
 It takes a lot of lines to create an AudioSource or play a clip once with custom parameters from script in Unity, this reduces all those to a single line.
-Additionally it greatly extends and integrates AudioSource.PlayOneShot() into `audioClip.Play()`. 
+Additionally it greatly extends and integrates AudioSource.PlayOneShot() into `audioClip.Play()`.
 
 See how simple it is to use in examples below.
 
