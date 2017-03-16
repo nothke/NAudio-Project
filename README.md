@@ -1,7 +1,7 @@
 # NAudio
 Extensions for a **very simple single line** audio clip playing and audio source creation, with all **custom parameters**, **pooling** and **spatializer support**.
 
-by Nothke
+I literally can't live without this script
 
 ## Quick Example
 
