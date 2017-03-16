@@ -1,9 +1,9 @@
 # NAudio
-Extensions for very simple audio playing..
-+ in just a **single line**
+Extensions for Unity for very simple audio playing..
++ in just a **single line**,
 + for one shot or looped,
-+ single and **multiple** clip playing
-+ with all custom parameters
++ single and **multiple** clip playing,
++ with all custom parameters,
 + **pooling** and
 + **spatializer** support.
 
