@@ -1,3 +1,13 @@
-clips extracted from SpliceSound's recording downloaded from FreeSound
-source: http://freesound.org/people/SpliceSound/sounds/369889/
-licence: Creative Commons 0
+==	sfx_hand-elbow-impact-on-tile-porcelain-bathroom-sink:
+	Extracted from SpliceSound's recording downloaded from FreeSound
+	source: http://freesound.org/people/SpliceSound/sounds/369889/
+	licence: Creative Commons 0
+
+==	music_yewbic__hiphop-loop-01-95-bpm
+	source: http://freesound.org/people/yewbic/sounds/112521/
+	licence: Creative Commons 0
+
+==	sfx_bus-motor-engine-sound-loop
+	edited: amplified and rendered to mono
+	srouce: http://freesound.org/people/qubodup/sounds/54909/
+	licence: Creative Commons 0
