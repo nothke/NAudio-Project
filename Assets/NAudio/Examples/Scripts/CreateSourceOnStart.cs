@@ -9,7 +9,6 @@ public class CreateSourceOnStart : MonoBehaviour {
     public AudioClip clip;
 
 	void Start () {
-        AudioSource source = NAudio.CreateSource(transform, clip);
-        source.Play();
+        NAudio.CreateSource(transform, clip).Play();
 	}
 }
