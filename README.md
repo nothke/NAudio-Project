@@ -1,5 +1,11 @@
 # NAudio
-Extensions for a very simple, **single line** one shot and looped single and **multiple** clip playing, with all custom parameters, **pooling** and **spatializer** support.
+Extensions for very simple audio playing..
++ in just a **single line**
++ for one shot or looped,
++ single and **multiple** clip playing
++ with all custom parameters
++ **pooling** and
++ **spatializer** support.
 
 I literally can't live without this script
 
