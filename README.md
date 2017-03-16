@@ -1,5 +1,5 @@
 # NAudio
-Extensions for a very simple single line audio clip playing and audio source creation, with pooling and spatializer support.
+Extensions for a **very simple single line** audio clip playing and audio source creation, with all **custom parameters**, **pooling** and **spatializer support**.
 
 by Nothke
 
