@@ -1,6 +1,22 @@
-﻿//#define ENABLE_SPATIALIZER_API // remove if no spatializer
-//#define USE_OCULUS_AUDIO
+﻿///
+/// NAudio by Nothke
+/// Simple clip playing and audio source creation in a single line
+///
+/// See function summaries and examples for usage
+///
+
+/// DEFINES:
+/// 
+/// Pooling creates a few sources on start and saves them in a queue, reusing them on every play,
+/// so sources are not created and destroyed every time played, freeing GC.
+/// If you don't want to use pooling, comment this line:
 #define POOLING
+
+/// If you are using native audio spatializer, uncomment following line. It will enable spatialization in sources
+//#define ENABLE_SPATIALIZER_API
+
+/// If using Oculus audio - ONSP, uncomment following line. It will add the ONSPAudioSource script to sources
+//#define USE_OCULUS_AUDIO
 
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,12 +24,15 @@ using UnityEngine.Audio;
 
 public static class NAudio
 {
+#if POOLING
     public static Queue<AudioSource> sourcePool;
     const int POOL_SIZE = 20;
+#endif
 
     const float MIN_DISTANCE = 1;
     const float SPREAD = 150;
 
+#if POOLING
     static AudioSource GetNextSource()
     {
         AudioSource source = sourcePool.Dequeue();
@@ -32,6 +51,7 @@ public static class NAudio
             sourcePool.Enqueue(CreateSource(poolRoot.transform));
         }
     }
+#endif
 
     public static AudioSource Play(
         this AudioClip clip, Vector3 position,
