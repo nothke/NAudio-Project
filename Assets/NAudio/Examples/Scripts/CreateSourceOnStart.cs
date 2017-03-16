@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class CreateSourceOnStart : MonoBehaviour {
     
-    AudioClip clip;
+    public AudioClip clip;
 
 	void Start () {
-        NAudio.CreateSource(transform, clip);
+        AudioSource source = NAudio.CreateSource(transform, clip);
+        source.Play();
 	}
 }
