@@ -1,0 +1,17 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Benchmark_ManySources_Update : MonoBehaviour {
+	
+	public AudioClip[] clips;
+	public int ratePerFrame = 1;
+	public float range = 10;
+
+	void Update () {
+		for (int i = 0; i < ratePerFrame; i++)
+		{
+			clips.Play(Random.insideUnitSphere * range);
+		}
+	}
+}
