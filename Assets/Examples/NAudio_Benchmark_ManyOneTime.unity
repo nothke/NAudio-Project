@@ -122,8 +122,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d845476612e3a2941bd12df164a28ae3, type: 3}
   - {fileID: 8300000, guid: 02698018bb5dcde4692289eef0029df5, type: 3}
   - {fileID: 8300000, guid: ac4b7227f14bb3c4a9ef4b301cdeaf63, type: 3}
-  ratePerFrame: 10
-  range: 10
+  ratePerFrame: 50
+  range: 50
   usePerf: 0
 --- !u!4 &1009227984
 Transform:
