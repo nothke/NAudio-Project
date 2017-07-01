@@ -1,0 +1,3 @@
+[submodule "Assets/NAudio"]
+	path = Assets/NAudio
+	url = https://github.com/nothke/NAudio.git
